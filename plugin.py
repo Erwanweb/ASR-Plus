@@ -386,7 +386,7 @@ class BasePlugin:
                 Devices[3].Update(nValue = 0,sValue = "0")
         if (Unit == 10):
             Devices[10].Update(nValue = self.powerOn,sValue = str(Level))
-            if self.ModeAuto = True :
+            if self.ModeAuto:
                 Devices[6].Update(nValue = self.powerOn,sValue = (Devices[10].sValue))  # AC setpoint = Thermostat setpoint
 
 
