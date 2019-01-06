@@ -326,20 +326,16 @@ class BasePlugin:
                 if (Devices[7].nValue != self.powerOn or Devices[7].sValue != sValueNew):
                     Devices[7].Update(nValue = self.powerOn,sValue = sValueNew)
 
-                # full check if ModeAuto is ON, and update the setting to be sure
+                # full check the params if ModeAuto is ON, and update the setting if necessary
                 if self.ModeAuto:
-                    if Devices[4].sValue == "30" and Devices[5].sValue == "10" :
+                    sValueNew = str(self.setpoint)
+                    if Devices[4].sValue == "30" and Devices[5].sValue == "10" and Devices[6].sValue == sValueNew:
                         Domoticz.Log("Setting OK in AutoMode")
                     else:
                         Devices[4].Update(nValue = self.powerOn,sValue = "30")  # Mode is Heat in Automode
                         Devices[5].Update(nValue = self.powerOn,sValue = "10")  # FanSpeed is Auto in Automode
-                        self.httpConnSetControl.Connect()
-
-                    sValueNew = str(self.setpoint)
-                    if Devices[6].sValue != sValueNew :
-                        Domoticz.Log("Setpoint OK in AutoMode")
-                    else:
                         Devices[6].Update(nValue = 0,sValue = sValueNew)
+                        self.httpConnSetControl.Connect()
 
 
         # Force disconnect, in case the ASR unit doesn't disconnect
