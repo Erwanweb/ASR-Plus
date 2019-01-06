@@ -338,7 +338,7 @@ class BasePlugin:
                     self.setpoint = consigne
                     Devices[6].sValue = demande
 
-                    if demande == consigne
+                    if demande = consigne
                         Domoticz.Log("Setpoint OK in AutoMode")
                     else:
                         Devices[6].Update(nValue = 0,sValue = str(self.setpoint))
