@@ -312,8 +312,8 @@ class BasePlugin:
                     Devices[5].Update(nValue = self.powerOn,sValue = sValueNew)
 
                 # AC Setpoint
-                Devices[6].Update(nValue = 0,sValue = str(stemp))
-                if self.ModeManual or self.PresenceTH:
+                Devices[6].Update(nValue = stemp,sValue = str(stemp))
+                if self.ModeManual:
                     Devices[10].Update(nValue = 0,sValue = (Devices[6].sValue))  # Thermostat setpoint = AC setpoint
 
 
@@ -328,13 +328,12 @@ class BasePlugin:
 
                 # full check the params if ModeAuto is ON, and update the setting if necessary
                 if self.ModeAuto:
-                    sValueNew = str(self.setpoint)
-                    if Devices[4].sValue == "30" and Devices[5].sValue == "10" and Devices[6].sValue == sValueNew:
+                    if Devices[4].sValue == "30" and Devices[5].sValue == "10" and Devices[6].nValue == self.setpoint:
                         Domoticz.Log("Setting OK in AutoMode")
                     else:
                         Devices[4].Update(nValue = self.powerOn,sValue = "30")  # Mode is Heat in Automode
                         Devices[5].Update(nValue = self.powerOn,sValue = "10")  # FanSpeed is Auto in Automode
-                        Devices[6].Update(nValue = 0,sValue = sValueNew)
+                        Devices[6].Update(nValue = self.setpoint,sValue = str(self.setpoint))
                         self.httpConnSetControl.Connect()
 
 
@@ -357,10 +356,10 @@ class BasePlugin:
                 # Update state of all other devices
             Devices[4].Update(nValue = self.powerOn,sValue = Devices[4].sValue)
             Devices[5].Update(nValue = self.powerOn,sValue = Devices[5].sValue)
-            Devices[6].Update(nValue = 0,sValue = Devices[6].sValue)
+            Devices[6].Update(nValue = Devices[6].nValue,sValue = Devices[6].sValue)
             Devices[7].Update(nValue = self.powerOn,sValue = Devices[7].sValue)
             Devices[9].Update(nValue = self.powerOn,sValue = Devices[9].sValue)
-            Devices[10].Update(nValue = 0,sValue = Devices[10].sValue)
+            Devices[10].Update(nValue = Devices[10].nValue,sValue = Devices[10].sValue)
 
         if (Unit == 4):
             Devices[4].Update(nValue = self.powerOn,sValue = str(Level))
@@ -380,14 +379,14 @@ class BasePlugin:
                 Devices[3].Update(nValue = 1,sValue = "100")
                 Devices[4].Update(nValue = self.powerOn,sValue = "30")  # AC mode Heat
                 Devices[5].Update(nValue = self.powerOn,sValue = "10")  # AC Fan Speed Auto
-                Devices[6].Update(nValue = 0,sValue = (Devices[10].sValue))  # AC setpoint = Thermostat setpoint
+                Devices[6].Update(nValue = (Devices[10].nValue),sValue = (Devices[10].sValue))  # AC setpoint = Thermostat setpoint
 
             elif (Devices[9].sValue == "30"):
                 self.ModeAuto = False
                 self.ModeManual = True
                 self.powerOn = 1
                 Devices[3].Update(nValue = 1,sValue = "100")
-                Devices[10].Update(nValue = 0,sValue = (Devices[6].sValue))  # Thermostat setpoint = AC setpoint
+                Devices[10].Update(nValue = (Devices[6].nValue),sValue = (Devices[6].sValue))  # Thermostat setpoint = AC setpoint
 
             elif (Devices[9].sValue == "10"):
                 self.powerOn = 0
@@ -398,7 +397,7 @@ class BasePlugin:
         if (Unit == 10):
             Devices[10].Update(nValue = 0,sValue = str(Level))
             if self.ModeManual:
-                Devices[6].Update(nValue = 0,sValue = (Devices[10].sValue))  # AC setpoint = Thermostat setpoint
+                Devices[6].Update(nValue = (Devices[10].nValue),sValue = (Devices[10].sValue))  # AC setpoint = Thermostat setpoint
 
         self.httpConnSetControl.Connect()
 
@@ -422,12 +421,11 @@ class BasePlugin:
                 if self.PresenceTH :
                     self.setpoint = float(Devices[10].sValue)
                     Domoticz.Log("AUTOMode - used setpoint is normal : " + str(self.setpoint))
-                    Devices[10].Update(nValue = 0,sValue = str(self.setpoint))
-                    Devices[6].Update(nValue = 0,sValue = str(self.setpoint))  # AC setpoint = Thermostat setpoint
+                    Devices[6].Update(nValue = self.setpoint,sValue = str(self.setpoint))  # AC setpoint = Thermostat setpoint
                 else :
                     self.setpoint = (float(Devices[10].sValue)-2)
                     Domoticz.Log("AUTOMode - used setpoint is reducted 1 : " + str(self.setpoint))
-                    Devices[6].Update(nValue = 0,sValue = str(self.setpoint))  # AC setpoint = Thermostat setpoint reducted
+                    Devices[6].Update(nValue = self.setpoint,sValue = str(self.setpoint))  # AC setpoint = Thermostat setpoint reducted
             else:
                 self.setpoint = float(Devices[6].sValue)
 
