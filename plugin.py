@@ -336,7 +336,7 @@ class BasePlugin:
                         self.httpConnSetControl.Connect()
 
                     sValueNew = str(self.setpoint)
-                    if Devices[6].sValue != sValueNew
+                    if Devices[6].sValue != sValueNew :
                         Domoticz.Log("Setpoint OK in AutoMode")
                     else:
                         Devices[6].Update(nValue = 0,sValue = sValueNew)
