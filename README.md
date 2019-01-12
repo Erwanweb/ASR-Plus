@@ -10,7 +10,7 @@ sudo apt-get update
 
 sudo apt-get install git
 
-git clone https://github.com/Erwanweb/ASR-Plus.git SVT2
+git clone https://github.com/Erwanweb/ASR-Plus.git ASRPlus
 
 cd ASRPlus
 
