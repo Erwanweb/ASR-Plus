@@ -111,7 +111,7 @@ class BasePlugin:
             Domoticz.Device(Name = "ASR Index",Unit=2,Type = 243,Subtype = 6,).Create()
             devicecreated.append(deviceparam(2,0,"1"))  # default is Index 1
         if 3 not in Devices:
-            Domoticz.Device(Name="AC On/Off", Unit=3, TypeName="Switch", Image=9, Used=1).Create()
+            Domoticz.Device(Name="AC On/Off", Unit=3, TypeName="Switch", Image=9).Create()
             devicecreated.append(deviceparam(3, 0, ""))  # default is Off
         if 4 not in Devices:
             Options = {"LevelActions":"||",
@@ -130,7 +130,7 @@ class BasePlugin:
                             Options = Options,Used = 1).Create()
             devicecreated.append(deviceparam(5,0,"10"))  # default is Auto mode
         if 6 not in Devices:
-            Domoticz.Device(Name = "AC Setpoint",Unit=6,Type = 242,Subtype = 1,Used = 1).Create()
+            Domoticz.Device(Name = "AC Setpoint",Unit=6,Type = 242,Subtype = 1).Create()
             devicecreated.append(deviceparam(6,0,"20"))  # default is 20 degrees
         if 7 not in Devices:
             Options = {"LevelActions":"||",
