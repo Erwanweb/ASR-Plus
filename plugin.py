@@ -448,7 +448,7 @@ class BasePlugin:
         Domoticz.Log("onbuildCommandString called")
 
         # Select good Index of the ASR from 1 to 16
-        requestUrl = "api_chunghopserver?action=changeconfig&remote="
+        requestUrl = "/api_chunghopserver?action=changeconfig&remote="
 
         if (Devices[2].sValue == "1"):
            requestUrl = requestUrl + "1"
