@@ -16,9 +16,10 @@ Version:    0.1.1: beta
         <param field="Port" label="Port" width="40px" required="true" default="8080"/>
         <param field="Username" label="Username" width="200px" required="false" default=""/>
         <param field="Password" label="Password" width="200px" required="false" default=""/>
-        <param field="Mode1" label="AC ASR server IP Address" width="200px" required="true" default=""/>
-        <param field="Mode2" label="AC ASR Mac" width="200px" required="true" default=""/>
+        <param field="Mode2" label="Pause sensors (csv list of idx)" width="100px" required="false" default=""/>
         <param field="Mode3" label="Presence Sensors (csv list of idx)" width="100px" required="false" default=""/>
+        <param field="Mode4" label="Inside Temperature Sensors (csv list of idx)" width="100px" required="false" default="0"/>
+        <param field="Mode5" label="Day/Night Activator, Pause On delay, Pause Off delay, Presence On delay, Presence Off delay (all in minutes), reducted T (in degree)" width="200px" required="true" default="0,1,1,2,45,3"/>
         <param field="Mode6" label="Logging Level" width="200px">
             <options>
                 <option label="Normal" value="Normal"  default="true"/>
