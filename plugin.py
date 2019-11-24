@@ -465,7 +465,7 @@ class BasePlugin:
                     self.setpoint = float(Devices[10].sValue)
                     Domoticz.Log("AUTOMode - used setpoint is normal : " + str(self.setpoint))
                     Devices[6].Update(nValue = 0,sValue = str(self.setpoint))  # AC setpoint = Thermostat setpoint
-                    if self.intemp < self.setpoint + self.deltamax :
+                    if self.intemp < self.setpoint - self.deltamax :
                         if not Devices[5].sValue == "40" :
                             Devices[5].Update(nValue = self.powerOn,sValue = "40")  # AC Fan Speed High
                             Domoticz.Log("Fan speed high because room temp is lower more than 1c from setpoint")
