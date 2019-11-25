@@ -174,7 +174,7 @@ class BasePlugin:
             Domoticz.Device(Name="Room temp", Unit=12, TypeName="Temperature",Used = 1).Create()
             devicecreated.append(deviceparam(12, 0, "20"))  # default is 20 degrees
         if 13 not in Devices:
-            Domoticz.Device(Name="Pause requested", Unit=11, TypeName="Switch", Image=9,Used = 1).Create()
+            Domoticz.Device(Name="Pause requested", Unit=13, TypeName="Switch", Image=9,Used = 1).Create()
             devicecreated.append(deviceparam(13, 0, ""))  # default is Off
 
         # if any device has been created in onStart(), now is time to update its defaults
