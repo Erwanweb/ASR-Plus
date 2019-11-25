@@ -387,7 +387,7 @@ class BasePlugin:
                     Devices[10].Update(nValue = 0,sValue = (Devices[6].sValue))  # Thermostat setpoint = AC setpoint
                     self.setpoint = float(Devices[6].sValue)
                 if self.ModeAuto:
-                    if self.PresenceTH and self.PresenceTHdelay + timedelta(seconds = 30) >= now:
+                    if self.PresenceTH and self.PresenceTHdelay + timedelta(seconds = 30) <= now:
                         Devices[10].Update(nValue = 0,sValue = (Devices[6].sValue))  # Thermostat setpoint = AC setpoint
                         self.setpoint = float(Devices[6].sValue)
 
