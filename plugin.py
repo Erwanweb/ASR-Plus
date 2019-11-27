@@ -515,7 +515,7 @@ class BasePlugin:
                         if not Devices[5].sValue == "40":
                             Devices[5].Update(nValue = self.powerOn,sValue = "40")  # AC Fan Speed High
                             Domoticz.Log("Fan speed high because room temp is lower more than delta min from setpoint")
-                            self.httpConnSetControl.Connect())
+                            self.httpConnSetControl.Connect()
 
                     else :
                         if not Devices[5].sValue == "10":
