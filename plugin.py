@@ -260,7 +260,7 @@ class BasePlugin:
 
             if (Connection == self.httpConnControlInfo):
                 Domoticz.Debug("Control connection created")
-                requestUrl = "/api_chunghopserver?status=minify"
+                requestUrl = "/api_climodom?status=minify"
                 Connection.Send({"Verb":"GET","URL":requestUrl,"Headers":headers})
             elif (Connection == self.httpConnSetControl):
                 Domoticz.Debug("Set connection created")
@@ -568,7 +568,7 @@ class BasePlugin:
         Domoticz.Log("onbuildCommandString called")
 
         # Select good Index of the ASR from 1 to 16
-        requestUrl = "/api_chunghopserver?action=changeconfig&remote="
+        requestUrl = "/api_climodom?action=changeconfig&remote="
 
         if (Devices[2].sValue == "1"):
             requestUrl = requestUrl + "1"
