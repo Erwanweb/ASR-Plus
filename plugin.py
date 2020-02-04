@@ -413,7 +413,7 @@ class BasePlugin:
         # test
 
         resultJson = None
-        url = "http://{}/api_chunghopserver?status=minify".format(Parameters["Username"])
+        url = "http://{}/api_climodom?status=minify".format(Parameters["Username"])
         Domoticz.Debug("Calling Climodom Connect API: {}".format(url))
         try:
             req = request.Request(url)
@@ -874,7 +874,7 @@ def DomoticzAPI(APICall):
 def ESPcommandAPI(APICall):
 
     resultJson = None
-    url = "http://{}/api_chunghopserver?action=changeconfig&remote={}".format(Parameters["Username"], parse.quote(APICall, safe="&="))
+    url = "http://{}/api_climodom?action=changeconfig&remote={}".format(Parameters["Username"], parse.quote(APICall, safe="&="))
     Domoticz.Debug("Calling Climodom Command API: {}".format(url))
     try:
         req = request.Request(url)
